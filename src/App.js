@@ -1,25 +1,53 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react'
 
-function App() {
+const App = () => {
+  const [todo,settodo]=useState('');
+  const [todolist,settodolist]=useState([]);
+  
+  const addTodo=()=>{
+    if(todo.trim()==='') return;
+    settodolist([...todolist,{id:Date.now(),text:todo,completed : false}]);
+    settodo(' ');
+  }
+
+  const togglecomple=(id)=>{
+    settodolist(todolist.map((item)=> item.id=== id ?{...item,completed : !item.completed}:item)
+       )
+  }
+  const deletetod=(id)=>{
+    settodolist(
+      todolist.filter((item)=>item.id !== id)
+    )
+  }
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+       <h1>To-Do List</h1>
+       <div class="input-container">
+        <input
+           type='text' placeholder='Add a new Task' value={todo} onChange={(e)=>settodo(e.target.value)}/>
+        <button onClick={addTodo} className='addbutton'>Add</button>
+       </div>
+       <ul className='todo-list'>
+          {todolist.map((item)=>(
+            <li key={item.id} onClick={()=>togglecomple(item.id)}
+            
+            style={{
+              cursor : 'pointer',
+              textDecoration:item.completed ?'line-through':'none',
+              color :item.completed ? 'gray' : 'black'
+  
+            }}
+            >
+              <span>{item.text}</span>
+              <button className='Delete-btn' 
+                onClick={(e)=>{e.stopPropagation();
+                deletetod(item.id);
+              }} >Delete</button>
+              </li>
+          ))}
+       </ul>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App

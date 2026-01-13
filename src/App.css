@@ -1,38 +1,111 @@
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+body{
+  font-family: 'Arial',sans-serif;
+  background-color: #f0f2f5;
+  margin: 0;
+  padding: 20px;
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  align-items: center;
+  min-height: 100vh;
+  color :#333;
+}
+
+.app-container{
+  background-color: floralwhite;
+  padding: 25px;
+  border-radius: 8px ;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  width: 100%;
+  max-width: 500px;
+  text-align: center;
+
+}
+
+h1{
+  color:#2c3e50;
+  margin-top: 0;
+  margin-bottom: 20px;
+  font-size: 2em;
+
+}
+
+.input-container{
+  display: flex;
+  gap:10px;
+  margin-bottom: 20px;
+}
+
+.input-container input[type="text"]{
+   flex-grow: 1;
+   padding: 10px 15px;
+   border:1px solid #dcdfe6;
+   border-radius: 4px;
+   font-size: 1rem;
+   outline: none;
+   transition: border-color 0.2s ease-in-out;
+}
+
+.input-container input [type="text"]:focus{
+     border-color:#409eff ;
+
+}
+
+.addbutton{
+  padding: 10px 20px;
+  background-color: #409eff;
   color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+   font-size: 1 rem;
+   font-weight: 500;
+   transition: background-color 0.2s ease-in-out;
+
+
+}       
+
+.addbutton:hover{
+  background-color: #337ecc;
+
+}
+.todo-list{
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  text-align: left;
+
 }
 
-.App-link {
-  color: #61dafb;
+.todo-list li{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding:12px 15px;
+  background-color: #f9fafc;
+  border: 1px solid #e4e7ed;
+  border-radius:4px ;
+  margin-bottom: 10px;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.Delete-btn{
+  padding: 6px 12px;
+  background-color: #f56c6c;
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-size: 0.9 rem;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.Delete-btn:hover{
+   background-color: #dd524d;
+}
+.todo-list:empty::after{
+  content: "No task yet . Add Some Task!";
+  display: block;
+  text-align: center;
+  padding: 20px 0;
+  font-style: italic;
 }
