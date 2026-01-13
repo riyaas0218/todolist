@@ -20,7 +20,7 @@ const App = () => {
     )
   }
   return (
-    <div>
+    <div className='app-container'>
        <h1>To-Do List</h1>
        <div class="input-container">
         <input
